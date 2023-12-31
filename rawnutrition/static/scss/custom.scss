@@ -1,0 +1,10 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+
+$primary: #04cbb7; // Your custom color
+
+$theme-colors: map-merge($theme-colors, (
+  "primary": $primary
+));
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";

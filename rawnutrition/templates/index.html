@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="main-exp-container d-flex flex-column align-items-center justify-content-start m-5 p-5">
+
+    <div id="date-container">Loading date...</div>
+
+    <div class="d-flex gap-5 m-5 p-5 justify-content-center">
+
+        <div class="d-flex flex-column align-items-center"> 
+            <h3>Calories</h3> <div>220</div>
+        </div>
+
+        <div class="d-flex flex-column align-items-center"> 
+
+            <h3>Protein</h3> <div>220</div>
+        </div>
+        <div class="d-flex flex-column align-items-center"> 
+            <h3>Carbs</h3> <div>220</div>
+        </div>
+        <div class="d-flex flex-column align-items-center"> 
+            <h3>Fats</h3> <div>220</div>
+        </div>
+        <div class="d-flex flex-column align-items-center"> 
+            <h3>Sat. Fats</h3> <div>220</div>
+        </div>
+        <div class="d-flex flex-column align-items-center"> 
+            <h3>Sugar</h3> <div>220</div>
+        </div>
+    </div>
+
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    {{ formset.management_form }}
+
+    <div id="formset-container">
+        {% for form in formset %}
+            <div class="food-item-entry d-flex gap-3">
+                <div class="field">
+                    {{ form.name.errors }}
+                    {{ form.name }}
+                </div>
+                <div class="field">
+                    {{ form.quantity.errors }}
+                    {{ form.quantity }}
+                </div>
+                <!-- Individual submit button for each form -->
+                <button class="submitCheckButton" type="submit" name="submit_single" value="{{ forloop.counter0 }}"><i class="fa-sharp fa-solid fa-square-check fa-xl" style="color: #04cbb7;"></i></button>
+            </div>
+        {% endfor %}
+    </div>
+</form>
+
+
+{% endblock %}
